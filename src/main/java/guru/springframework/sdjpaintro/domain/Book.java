@@ -1,9 +1,7 @@
 package guru.springframework.sdjpaintro.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
 /**
@@ -13,7 +11,8 @@ import java.util.Objects;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_generator")
+    @SequenceGenerator(name="book_generator", sequenceName = "book_seq", allocationSize=1)
     private Long id;
 
     private String title;
