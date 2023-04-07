@@ -20,14 +20,14 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         bookRepository.deleteAll();
 
-        Book bookDDD = new Book("Domain Driven Design", "123", "RandomHouse");
-        Book savedDDD = bookRepository.save(bookDDD);
+        Book bookDDD = new Book("Domain Driven Design", "123", "RandomHouse", null);
+        bookRepository.save(bookDDD);
 
-        Book bookSIA = new Book("Spring In Action", "234234", "Oriely");
-        Book savedSIA = bookRepository.save(bookSIA);
+        Book bookSIA = new Book("Spring In Action", "234234", "Oriely", null);
+        bookRepository.save(bookSIA);
 
         bookRepository.findAll().forEach(book -> {
             System.out.println("Book Id: " + book.getId());

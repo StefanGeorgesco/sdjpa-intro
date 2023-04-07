@@ -1,9 +1,6 @@
 package guru.springframework.sdjpaintro.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * Created by jt on 8/14/21.
@@ -12,7 +9,8 @@ import jakarta.persistence.Id;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_generator")
+    @SequenceGenerator(name="author_generator", sequenceName = "author_seq", allocationSize=1)
     private Long id;
 
     private String firstName;
